@@ -1,0 +1,154 @@
+# Customizing the 'SmallLabel' widget
+<SmallLabel@Label>
+   font_size: 14
+   font_name: 'fonts/RockoFLF-Bold.ttf'
+   color: '#9a9a9c'
+   size_hint: None, None
+
+# Customizing the 'MDSlider' widget
+<MDSlider>:
+   thumb_color_active: '#827f7f'
+   thumb_color_inactive: '#827f7f'
+
+# The main layout
+GridLayout:
+   rows: 5
+   padding: '20dp'
+   spacing: '15dp'
+   
+   # A layout with brightness settings
+   GridLayout:
+      rows: 2
+
+      # A brightnesss slider
+      MDSlider:
+         id: brightness
+         min: 1
+         max: 100
+         value: app.storage.get('Settings')['brightness']
+         show_off: False
+         hint: False
+         color: '#bdbebf'
+         on_value: app.controller()
+
+      # A layout with 'Brightness' and brightness level labels
+      MDBoxLayout:
+         AnchorLayout:
+            anchor_x: 'left'
+
+            SmallLabel:
+               text: 'Brightness'
+            
+         AnchorLayout:
+            anchor_x: 'right'
+
+            SmallLabel:
+               text: str(int(brightness.value))
+
+   # A layout with a red color settings
+   GridLayout:
+      rows: 2
+
+      # A red color slider
+      MDSlider:
+         id: red_color
+         min: 1
+         max: 100
+         value: app.storage.get('Settings')['R']
+         show_off: False
+         hint: False
+         color: 'red'
+         on_value: app.controller();
+
+      # A layout with 'R' and a red color level labels
+      MDBoxLayout:
+         AnchorLayout:
+            anchor_x: 'left'
+            
+            SmallLabel:
+               text: 'R'
+            
+         AnchorLayout:
+            anchor_x: 'right'
+
+            SmallLabel:
+               text: str(int(red_color.value))
+
+   # A layout with a green color settings
+   GridLayout:
+      rows: 2
+
+      # A green color slider
+      MDSlider:
+         id: green_color
+         min: 1
+         max: 100
+         value: app.storage.get('Settings')['G']
+         show_off: False
+         hint: False
+         color: 'green'
+         on_value: app.controller()
+
+      # A layout with 'G' and a green color level labels
+      MDBoxLayout:
+         AnchorLayout:
+            anchor_x: 'left'
+            
+            SmallLabel:
+               text: 'G'
+            
+         AnchorLayout:
+            anchor_x: 'right'
+
+            SmallLabel:
+               text: str(int(green_color.value))
+
+   # A layout with blue color settings
+   GridLayout:
+      rows: 2
+
+      # A blue color slider
+      MDSlider:
+         id: blue_color
+         min: 1
+         max: 100
+         value: app.storage.get('Settings')['B']
+         show_off: False
+         hint: False
+         color: 'blue'
+         on_value: app.controller()
+
+      # A layout with 'B' and a blue color level labels
+      MDBoxLayout:
+         AnchorLayout:
+            anchor_x: 'left'
+            
+            SmallLabel:
+               text: 'B'
+            
+         AnchorLayout:
+            anchor_x: 'right'
+
+            SmallLabel:
+               text: str(int(blue_color.value))
+
+
+   # A layout with a 'Reading mode' label and a switch, which turns the reading mode on
+   MDBoxLayout:
+      AnchorLayout:
+         anchor_x: 'center'
+         anchor_y: 'center'
+
+         Label:
+            font_size: 20
+            font_name: 'fonts/RockoFLF-Bold.ttf'
+            text: 'Reading mode'
+
+      AnchorLayout:
+         anchor_x: 'center'
+         anchor_y: 'center'
+
+         Switch:
+            id: reading_mode
+            size_hint: None, None
+            on_active: app.reading_mode(self.active)
