@@ -5,5 +5,6 @@
 ## Installation Instruction:
     $ git clone https://github.com/ZG06/Brightness-Controller.git
     $ cd Brightness-Controller
+    $ pip install -r requirements.txt
     $ chmod +x main.py
     $ python3 main.py
